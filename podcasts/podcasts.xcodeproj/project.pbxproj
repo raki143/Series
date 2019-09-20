@@ -15,6 +15,7 @@
 		7EE479DF23295EEE00A54722 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE479DE23295EEE00A54722 /* MainTabBarController.swift */; };
 		7EE479E2232A44BD00A54722 /* PodcastsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE479E1232A44BD00A54722 /* PodcastsSearchController.swift */; };
 		7EE479E5232A467100A54722 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE479E4232A467100A54722 /* Podcast.swift */; };
+		7EF75CD82334D4750062BA5C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF75CD72334D4750062BA5C /* APIService.swift */; };
 		D4422B08CF585EC071006717 /* Pods_podcasts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0448E4500FEE02B45E25686 /* Pods_podcasts.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		7EE479DE23295EEE00A54722 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		7EE479E1232A44BD00A54722 /* PodcastsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchController.swift; sourceTree = "<group>"; };
 		7EE479E4232A467100A54722 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
+		7EF75CD72334D4750062BA5C /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		8BDA5EF6174564F9D43506D8 /* Pods-podcasts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-podcasts.debug.xcconfig"; path = "Target Support Files/Pods-podcasts/Pods-podcasts.debug.xcconfig"; sourceTree = "<group>"; };
 		A6D0390D0237C593C1242240 /* Pods-podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-podcasts.release.xcconfig"; path = "Target Support Files/Pods-podcasts/Pods-podcasts.release.xcconfig"; sourceTree = "<group>"; };
 		D0448E4500FEE02B45E25686 /* Pods_podcasts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_podcasts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +77,7 @@
 		7EE479CB23295E1B00A54722 /* podcasts */ = {
 			isa = PBXGroup;
 			children = (
+				7EF75CD62334D3D90062BA5C /* API */,
 				7EE479E3232A465B00A54722 /* Models */,
 				7EE479E0232A449600A54722 /* Controllers */,
 				7EE479CC23295E1B00A54722 /* AppDelegate.swift */,
@@ -102,6 +105,15 @@
 				7EE479E4232A467100A54722 /* Podcast.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		7EF75CD62334D3D90062BA5C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				7EF75CD72334D4750062BA5C /* APIService.swift */,
+			);
+			name = API;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		9D9F741779CA0296AB84B060 /* Pods */ = {
@@ -237,6 +249,7 @@
 				7EE479CF23295E1B00A54722 /* ViewController.swift in Sources */,
 				7EE479CD23295E1B00A54722 /* AppDelegate.swift in Sources */,
 				7EE479DF23295EEE00A54722 /* MainTabBarController.swift in Sources */,
+				7EF75CD82334D4750062BA5C /* APIService.swift in Sources */,
 				7EE479E5232A467100A54722 /* Podcast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

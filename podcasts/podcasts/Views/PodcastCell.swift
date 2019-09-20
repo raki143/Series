@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PodcastCell: UITableViewCell {
     
@@ -15,11 +16,24 @@ class PodcastCell: UITableViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var episodeCountLabel: UILabel!
     
+    override func prepareForReuse() {
+        podcastImageView.image = nil
+        trackNameLabel.text = nil
+        episodeCountLabel.text = nil
+        artistNameLabel.text = nil
+    }
+    
     var podcast: Podcast? {
         didSet{
             if let podcast = podcast{
                 trackNameLabel.text = podcast.trackName
                 artistNameLabel.text = podcast.artistName
+                episodeCountLabel.text = "\(String(describing: podcast.trackCount ?? 0)) Episodes"
+                
+                guard let url = URL(string: podcast.artworkUrl600 ?? "") else {
+                    return
+                }
+                podcastImageView.sd_setImage(with: url, completed: nil)
             }
         }
     }

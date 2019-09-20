@@ -12,10 +12,7 @@ import Alamofire
 
 class PodcastsSearchController: UITableViewController {
     
-    private var podcasts = [
-        Podcast(trackName: "Lets Build That App", artistName: "Brian Voong"),
-        Podcast(trackName: "Some Podcast", artistName: "Some Author")
-        ]
+    private var podcasts = [Podcast]()
     
     private let cellId = "cellId"
     
@@ -30,6 +27,7 @@ class PodcastsSearchController: UITableViewController {
     //MARK:- Setup work
     
     private func setupSearchBar() {
+        self.definesPresentationContext = true
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.dimsBackgroundDuringPresentation = false
@@ -37,6 +35,7 @@ class PodcastsSearchController: UITableViewController {
     }
     
     private func setupTableView() {
+        tableView.tableFooterView = UIView()
         let nib = UINib(nibName: "PodcastCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)
     }
@@ -55,8 +54,27 @@ class PodcastsSearchController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episodeController = EpisodesController()
+        let podcast = self.podcasts[indexPath.row]
+        episodeController.podcast = podcast
+        navigationController?.pushViewController(episodeController, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 132
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "Please enter a Search Term"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        return label
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.podcasts.count > 0 ? 0 : 250
     }
 }
 

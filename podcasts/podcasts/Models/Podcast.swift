@@ -11,9 +11,16 @@ import Foundation
 struct Podcast: Decodable {
     var trackName: String?
     var artistName: String?
+    var artworkUrl600: String?
+    var trackCount: Int?
+    var feedUrl: String?
 }
 
 struct SearchResults: Decodable {
     let resultCount: Int
     let results: [Podcast]
+}
+
+struct Episode {
+    let title: String
 }

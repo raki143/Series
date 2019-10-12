@@ -56,33 +56,29 @@ class EpisodesController: UITableViewController {
     //MARK:- Networking Methods
     private func fetchEpisodes(){
         print("Looking for episodes at feed url:", podcast?.feedUrl ?? "")
-        guard let feedUrl = podcast?.feedUrl else {
+        guard let feedUrl = podcast?.feedUrl?.toSecureHTTPS() else {
             return
         }
         
-        let secureFeedUrl = feedUrl.contains("https") ? feedUrl : feedUrl.replacingOccurrences(of: "http", with: "https")
-        
-        guard let url = URL(string: secureFeedUrl) else {
-            return
-        }
-        
-        let parser = FeedParser(URL: url)
-        parser.parseAsync { (result) in
-            print("successfully parsed:",result.isSuccess)
-            switch result {
-            case let .rss(feed):
-                feed.items?.forEach({ (feedItem) in
-                    self.episodes.append(Episode(feedItem: feedItem))
-                })
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                
-            case let .failure(error):
-                print("Failed to parse feed:", error)
-            default:
-                break
+        APIService.shared.fetchEpisodes(feedUrl: feedUrl) { [weak self] (episodes, error) in
+            
+            guard let weakSelf = self else {
+                return
             }
+            
+            guard error == nil else {
+                return
+            }
+            
+            guard let episodes = episodes else {
+                return
+            }
+            
+            weakSelf.episodes = episodes
+            DispatchQueue.main.async {
+                weakSelf.tableView.reloadData()
+            }
+            
         }
     }
 }

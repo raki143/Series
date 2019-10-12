@@ -19,6 +19,9 @@ class EpisodeCell: UITableViewCell {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MMM dd,yyyy"
                 dateLabel.text = dateFormatter.string(from: episode.pubDate)
+                
+                let url = URL(string: episode.imageUrl?.toSecureHTTPS() ?? "")
+                episodeImageView.sd_setImage(with: url)
             }
         }
     }
@@ -27,4 +30,11 @@ class EpisodeCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    
+    override func prepareForReuse() {
+        episodeImageView.image = nil
+        dateLabel.text = nil
+        titleLabel.text = nil
+        descriptionLabel.text = nil
+    }
 }

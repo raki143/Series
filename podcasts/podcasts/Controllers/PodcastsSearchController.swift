@@ -82,10 +82,12 @@ extension PodcastsSearchController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
         
-        APIService.shared.fetchPodcasts(searchText: searchText) { [weak self] (podcasts) in
-            self?.podcasts = podcasts
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
+        APIService.shared.fetchPodcasts(searchText: searchText) { [weak self] (podcasts,error)  in
+            if let podcasts = podcasts {
+                self?.podcasts = podcasts
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
             }
         }
     }

@@ -10,6 +10,9 @@
 		7E687BD42351E21100469A8D /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E687BD32351E21100469A8D /* Episode.swift */; };
 		7E687BD72351E2E200469A8D /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E687BD52351E2E200469A8D /* EpisodeCell.swift */; };
 		7E687BD82351E2E200469A8D /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E687BD62351E2E200469A8D /* EpisodeCell.xib */; };
+		7E687BDB23520CDB00469A8D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E687BDA23520CDB00469A8D /* String.swift */; };
+		7E687BDD2352118900469A8D /* RSSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E687BDC2352118900469A8D /* RSSFeed.swift */; };
+		7E687BE02352245500469A8D /* PodcastErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E687BDF2352245500469A8D /* PodcastErrors.swift */; };
 		7EE479CD23295E1B00A54722 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE479CC23295E1B00A54722 /* AppDelegate.swift */; };
 		7EE479CF23295E1B00A54722 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE479CE23295E1B00A54722 /* ViewController.swift */; };
 		7EE479D223295E1B00A54722 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EE479D023295E1B00A54722 /* Main.storyboard */; };
@@ -29,6 +32,9 @@
 		7E687BD32351E21100469A8D /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		7E687BD52351E2E200469A8D /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		7E687BD62351E2E200469A8D /* EpisodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
+		7E687BDA23520CDB00469A8D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		7E687BDC2352118900469A8D /* RSSFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeed.swift; sourceTree = "<group>"; };
+		7E687BDF2352245500469A8D /* PodcastErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastErrors.swift; sourceTree = "<group>"; };
 		7EE479C923295E1B00A54722 /* podcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = podcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE479CC23295E1B00A54722 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EE479CE23295E1B00A54722 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +74,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7E687BD923520C8200469A8D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7E687BDA23520CDB00469A8D /* String.swift */,
+				7E687BDC2352118900469A8D /* RSSFeed.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7E687BDE2352240F00469A8D /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				7E687BDF2352245500469A8D /* PodcastErrors.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		7EE479C023295E1B00A54722 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +112,8 @@
 		7EE479CB23295E1B00A54722 /* podcasts */ = {
 			isa = PBXGroup;
 			children = (
+				7E687BDE2352240F00469A8D /* Error */,
+				7E687BD923520C8200469A8D /* Extensions */,
 				7EF75CD92334F5C50062BA5C /* Views */,
 				7EF75CD62334D3D90062BA5C /* API */,
 				7EE479E3232A465B00A54722 /* Models */,
@@ -277,10 +302,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E687BDD2352118900469A8D /* RSSFeed.swift in Sources */,
 				7EE479E2232A44BD00A54722 /* PodcastsSearchController.swift in Sources */,
+				7E687BDB23520CDB00469A8D /* String.swift in Sources */,
 				7EE479CF23295E1B00A54722 /* ViewController.swift in Sources */,
 				7EE479CD23295E1B00A54722 /* AppDelegate.swift in Sources */,
 				7EF75CDF233517B90062BA5C /* EpisodesController.swift in Sources */,
+				7E687BE02352245500469A8D /* PodcastErrors.swift in Sources */,
 				7EE479DF23295EEE00A54722 /* MainTabBarController.swift in Sources */,
 				7E687BD72351E2E200469A8D /* EpisodeCell.swift in Sources */,
 				7EF75CD82334D4750062BA5C /* APIService.swift in Sources */,

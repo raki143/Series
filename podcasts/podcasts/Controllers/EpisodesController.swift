@@ -7,23 +7,20 @@
 //
 
 import UIKit
+import FeedKit
 
 class EpisodesController: UITableViewController {
     
     var podcast: Podcast? {
         didSet{
            navigationItem.title = podcast?.trackName
+            fetchEpisodes()
         }
     }
     
     private let cellId = "cellId"
     
-    var episodes = [
-        Episode(title: "First Episode"),
-        Episode(title: "Second Episode"),
-        Episode(title: "Third Episode"),
-        
-        ]
+    private var episodes = [Episode]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,5 +45,39 @@ class EpisodesController: UITableViewController {
         let episode = episodes[indexPath.row]
         cell.textLabel?.text = episode.title
         return cell
+    }
+    
+    //MARK:- Networking Methods
+    private func fetchEpisodes(){
+        print("Looking for episodes at feed url:", podcast?.feedUrl ?? "")
+        guard let feedUrl = podcast?.feedUrl else {
+            return
+        }
+        
+        let secureFeedUrl = feedUrl.contains("https") ? feedUrl : feedUrl.replacingOccurrences(of: "http", with: "https")
+        
+        guard let url = URL(string: secureFeedUrl) else {
+            return
+        }
+        
+        let parser = FeedParser(URL: url)
+        parser.parseAsync { (result) in
+            print("successfully parsed:",result.isSuccess)
+            switch result {
+            case let .rss(feed):
+                feed.items?.forEach({ (feedItem) in
+                    let episode = Episode(title: feedItem.title ?? "")
+                    self.episodes.append(episode)
+                })
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+            case let .failure(error):
+                print("Failed to parse feed:", error)
+            default:
+                break
+            }
+        }
     }
 }

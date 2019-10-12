@@ -30,7 +30,8 @@ class EpisodesController: UITableViewController {
     //MARK:- Setup Work
     
     private func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        let nib = UINib(nibName: "EpisodeCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: cellId)
         tableView.tableFooterView = UIView()
     }
     
@@ -41,10 +42,15 @@ class EpisodesController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        let episode = episodes[indexPath.row]
-        cell.textLabel?.text = episode.title
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? EpisodeCell else {
+            return UITableViewCell()
+        }
+        cell.episode = episodes[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 134
     }
     
     //MARK:- Networking Methods
@@ -66,8 +72,7 @@ class EpisodesController: UITableViewController {
             switch result {
             case let .rss(feed):
                 feed.items?.forEach({ (feedItem) in
-                    let episode = Episode(title: feedItem.title ?? "")
-                    self.episodes.append(episode)
+                    self.episodes.append(Episode(feedItem: feedItem))
                 })
                 DispatchQueue.main.async {
                     self.tableView.reloadData()

@@ -20,7 +20,3 @@ struct SearchResults: Decodable {
     let resultCount: Int
     let results: [Podcast]
 }
-
-struct Episode {
-    let title: String
-}

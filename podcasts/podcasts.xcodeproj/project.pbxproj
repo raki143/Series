@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7E16AB132352F8050087642E /* PlayerDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E16AB122352F8050087642E /* PlayerDetailsView.xib */; };
 		7E16AB152352FF5C0087642E /* PlayerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E16AB142352FF5C0087642E /* PlayerDetailsView.swift */; };
+		7E16AB1723544DF40087642E /* CMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E16AB1623544DF40087642E /* CMTime.swift */; };
 		7E687BD42351E21100469A8D /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E687BD32351E21100469A8D /* Episode.swift */; };
 		7E687BD72351E2E200469A8D /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E687BD52351E2E200469A8D /* EpisodeCell.swift */; };
 		7E687BD82351E2E200469A8D /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E687BD62351E2E200469A8D /* EpisodeCell.xib */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		7E16AB122352F8050087642E /* PlayerDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerDetailsView.xib; sourceTree = "<group>"; };
 		7E16AB142352FF5C0087642E /* PlayerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsView.swift; sourceTree = "<group>"; };
+		7E16AB1623544DF40087642E /* CMTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMTime.swift; sourceTree = "<group>"; };
 		7E687BD32351E21100469A8D /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		7E687BD52351E2E200469A8D /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		7E687BD62351E2E200469A8D /* EpisodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			children = (
 				7E687BDA23520CDB00469A8D /* String.swift */,
 				7E687BDC2352118900469A8D /* RSSFeed.swift */,
+				7E16AB1623544DF40087642E /* CMTime.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				7EF75CD82334D4750062BA5C /* APIService.swift in Sources */,
 				7EE479E5232A467100A54722 /* Podcast.swift in Sources */,
 				7E687BD42351E21100469A8D /* Episode.swift in Sources */,
+				7E16AB1723544DF40087642E /* CMTime.swift in Sources */,
 				7EF75CDD2334FB230062BA5C /* PodcastCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,13 +25,8 @@ class PlayerDetailsView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        let time = CMTimeMake(value: 1, timescale: 3)
-        let times = [NSValue(time: time)]
-        player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
-            print("Episode started playing")
-            self.enlargeEpisodeImageView()
-        }
+        observePlayerCurrentTime()
+        episodeStartNotification()
     }
     
     private let player: AVPlayer = {
@@ -43,6 +38,9 @@ class PlayerDetailsView: UIView {
     private let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     
     //MARK:- IBOutlets, IBActions and private methods
+    @IBOutlet weak var currentTimeSlider: UISlider!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var currentTimeLabel: UILabel!
     
     @IBAction private func handleDismiss(_ sender: Any) {
         self.removeFromSuperview()
@@ -101,5 +99,33 @@ class PlayerDetailsView: UIView {
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.episodeImageView.transform = self.shrunkenTransform
         })
+    }
+    
+    private func episodeStartNotification() {
+        let time = CMTimeMake(value: 1, timescale: 3)
+        let times = [NSValue(time: time)]
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
+            print("Episode started playing")
+            self.enlargeEpisodeImageView()
+        }
+    }
+    
+    private func observePlayerCurrentTime() {
+        let interval = CMTimeMake(value: 1, timescale: 2)
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { (time) in
+            self.currentTimeLabel.text = time.toDisplayString()
+            let durationTime = self.player.currentItem?.duration
+            self.durationLabel.text = durationTime?.toDisplayString()
+            
+            self.updateCurrentTimeSlider()
+        }
+    }
+    
+    private func updateCurrentTimeSlider() {
+        let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
+        let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
+        let percentage = currentTimeSeconds / durationSeconds
+        
+        self.currentTimeSlider.value = Float(percentage)
     }
 }
